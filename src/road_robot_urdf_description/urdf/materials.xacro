@@ -1,0 +1,20 @@
+<?xml version="1.0" ?>
+<robot name="road_robot_urdf" xmlns:xacro="http://www.ros.org/wiki/xacro" >
+
+<material name="silver_default">
+  <color rgba="0.700 0.700 0.700 1.000"/>
+</material>
+<material name="aluminum_polished">
+  <color rgba="0.81568627451 0.83529411764 0.85882352941 1.0"/>
+</material>
+<material name="rubber_soft">
+  <color rgba="0.3137254901960784 0.3137254901960784 0.3137254901960784 1.0"/>
+</material>
+<material name="opaque262626">
+  <color rgba="0.10196078431372549 0.10196078431372549 0.10196078431372549 1.0"/>
+</material>
+<material name="opaque137137137">
+  <color rgba="0.5372549019607843 0.5372549019607843 0.5372549019607843 1.0"/>
+</material>
+
+</robot>

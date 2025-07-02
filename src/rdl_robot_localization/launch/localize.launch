@@ -1,0 +1,23 @@
+<launch>
+  <!-- Transformada entre el base_footprint y el base_link -->
+  <node pkg="tf2_ros" type="static_transform_publisher" name="base_to_footprint"
+        args="-0.15 0.0 -0.06 0.0 0.0 0.0 base_link base_footprint" />
+  <!-- Transformada entre el base_footprint y el imu -->
+  <node pkg="tf2_ros" type="static_transform_publisher" name="footprint_to_imu"
+        args="-0.025 -0.002356 0.335 0.0 0.0 0.0 base_footprint imu" />
+        
+  <!-- El base_link está ubicado en el centro de las dos llantas del robot diferencial, 
+  mientras que base_footprint está ubicado en las mismas coordenadas x e y del marcador o punto de pintado 
+  y a la altura de z=0
+   -->
+
+   <!-- Nodo EKF -->
+  <node pkg="robot_localization" type="ekf_localization_node" name="ekf_localization_node" output="screen">
+    <param name="use_sim_time" value="false"/>
+    <param name="robot_state_publisher" value="true"/>
+    <param name="odom_frame" value="odom"/>
+    <param name="base_link_frame" value="base_footprint"/>
+    <param name="world_frame" value="odom"/>
+    <rosparam file="$(find rdl_robot_localization)/launch/localize_gazebo.yaml" command="load"/>
+  </node>
+</launch>

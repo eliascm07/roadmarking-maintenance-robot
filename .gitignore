@@ -1,0 +1,17 @@
+# Ignorar carpetas generadas por catkin
+build/
+devel/
+install/
+*.swp
+*.pyc
+*.log
+.idea/
+.vscode/
+# Ignorar paquetes externos
+src/ros_astra_camera/
+src/turtlebot3/turtlebot3/
+src/turtlebot3/turtlebot3_msgs/
+src/turtlebot3/turtlebot3_simulations/
+.catkin_workspace
+bags/
+*.zip

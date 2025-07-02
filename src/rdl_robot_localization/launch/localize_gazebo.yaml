@@ -1,0 +1,37 @@
+frequency: 20  # Frecuencia del filtro EKF (Hz)
+sensor_timeout: 0.1  # Tiempo máximo para recibir datos de sensores
+two_d_mode: true  # Asume que el robot opera en un plano 2D
+
+# Configuración de los marcos de referencia
+odom_frame: odom
+base_link_frame: base_footprint
+world_frame: odom  # Normalmente igual al marco de odometría
+
+# Configuración del sensor de odometría
+odom0: /odom
+odom0_config: [true, true, false,  # x, y, z (posición)
+               false, false, true, # roll, pitch, yaw (orientación)
+               true, true, false,  # vx, vy, vz (velocidad lineal)
+               false, false, false, # vroll, vpitch, vyaw (velocidad angular)
+               false, false, false] # ax, ay, az (aceleracion lineal)
+
+# Configuración del sensor IMU
+#imu0: /imu
+#imu0_config: [false, false, false,  # x, y, z (posición)
+#              false, false, true,    # roll, pitch, yaw (orientación)
+#              false, false, false, # vx, vy, vz (velocidad lineal)
+#              false, false, true,    # vroll, vpitch, vyaw (velocidad angular)
+#              true, true, true] # ax, ay, az (aceleracion lineal)
+#imu0_differential: false
+#imu0_remove_gravitational_acceleration: true
+
+use_control: false
+
+# Configuración del comando de velocidades (cmd_vel)
+#twist0: /cmd_vel
+#twist0_config: [false, false, false,  # x, y, z (posición)
+#                false, false, false, # roll, pitch, yaw (orientación)
+#                true, true, false,   # vx, vy, vz (velocidad lineal)
+#                false, false, true]  # vroll, vpitch, vyaw (velocidad angular)
+#twist0_differential: false
+#twist0_queue_size: 5  # Ajusta la cantidad de mensajes en cola

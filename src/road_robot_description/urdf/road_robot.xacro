@@ -1,0 +1,253 @@
+<?xml version="1.0" ?>
+<robot name="road_robot" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+<xacro:include filename="$(find road_robot_description)/urdf/materials.xacro" />
+<xacro:include filename="$(find road_robot_description)/urdf/road_robot.trans" />
+<xacro:include filename="$(find road_robot_description)/urdf/road_robot.gazebo" />
+
+<link name="base_footprint"/>
+
+<joint name="base_joint" type="fixed">
+  <parent link="base_footprint"/>
+  <child link="base_link" />
+  <origin xyz="-0.222031 0.0 0.036911" rpy="0 0 0"/>
+</joint>
+
+
+<link name="base_link">
+  <inertial>
+    <origin xyz="0.03624146893688763 -0.00014856741681437588 0.15276673923366854" rpy="0 0 0"/>
+    <mass value="5.682972445938197"/>
+    <inertia ixx="0.245259" iyy="0.270421" izz="0.306559" ixy="6.5e-05" iyz="-0.000166" ixz="0.006066"/>
+  </inertial>
+  <visual>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://road_robot_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="aluminum_polished"/>
+  </visual>
+  <collision>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://road_robot_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="right_front_wheel_2">
+  <inertial>
+    <origin xyz="-3.2865156698869136e-07 -0.03622068990009353 -9.942917955987896e-08" rpy="0 0 0"/>
+    <mass value="0.4797920786168596"/>
+    <inertia ixx="0.000609" iyy="0.000954" izz="0.000609" ixy="-0.0" iyz="0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.222031 0.223356 -0.023089" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://road_robot_description/meshes/right_front_wheel_2.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="rubber_soft"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.222031 0.223356 -0.023089" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://road_robot_description/meshes/right_front_wheel_2.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="left_front_wheel_1">
+  <inertial>
+    <origin xyz="-3.078901775477316e-07 0.036220675087449694 -1.1760244167380307e-07" rpy="0 0 0"/>
+    <mass value="0.4797924092151137"/>
+    <inertia ixx="0.000609" iyy="0.000954" izz="0.000609" ixy="0.0" iyz="0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.222031 -0.222644 -0.023089" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://road_robot_description/meshes/left_front_wheel_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="rubber_soft"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.222031 -0.222644 -0.023089" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://road_robot_description/meshes/left_front_wheel_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="right_camera_brio_1">
+  <inertial>
+    <origin xyz="-0.0007293144369594495 -5.8799713350696226e-05 0.013858627709016413" rpy="0 0 0"/>
+    <mass value="0.12018394361985685"/>
+    <inertia ixx="0.000131" iyy="2.2e-05" izz="0.000132" ixy="0.0" iyz="-0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.133324 0.070356 -0.440647" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://road_robot_description/meshes/right_camera_brio_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="252525"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.133324 0.070356 -0.440647" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://road_robot_description/meshes/right_camera_brio_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<!-- El nuevo enlace con el sistema de coordenadas rotado -->
+<link name="right_camera_tf"/>
+
+<link name="left_camera_brio_1">
+  <inertial>
+    <origin xyz="-0.0007293144369603932 -5.879971335386036e-05 0.013858627709016635" rpy="0 0 0"/>
+    <mass value="0.12018394361985822"/>
+    <inertia ixx="0.000131" iyy="2.2e-05" izz="0.000132" ixy="0.0" iyz="-0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.133324 -0.069644 -0.440647" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://road_robot_description/meshes/left_camera_brio_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="252525"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.133324 -0.069644 -0.440647" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://road_robot_description/meshes/left_camera_brio_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<!-- El nuevo enlace con el sistema de coordenadas rotado -->
+<link name="left_camera_tf"/>
+
+<link name="right_circular_brush_1">
+  <inertial>
+    <origin xyz="-0.00031598888165401684 7.931782659519049e-05 -0.04313514993595707" rpy="0 0 0"/>
+    <mass value="0.11751061548237554"/>
+    <inertia ixx="0.000152" iyy="0.000152" izz="0.00026" ixy="-0.0" iyz="0.0" ixz="1e-06"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.33221 0.079527 -0.053963" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://road_robot_description/meshes/right_circular_brush_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="opaque152170175"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.33221 0.079527 -0.053963" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://road_robot_description/meshes/right_circular_brush_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="left_circular_brush_1">
+  <inertial>
+    <origin xyz="-0.0003159888816438583 7.931782659066633e-05 -0.04313514993596057" rpy="0 0 0"/>
+    <mass value="0.11751061548238036"/>
+    <inertia ixx="0.000152" iyy="0.000152" izz="0.00026" ixy="-0.0" iyz="0.0" ixz="1e-06"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.33221 -0.080473 -0.053963" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://road_robot_description/meshes/left_circular_brush_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="opaque152170175"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.33221 -0.080473 -0.053963" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://road_robot_description/meshes/left_circular_brush_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="imu_1">
+  <inertial>
+    <origin xyz="9.158492421586228e-05 -4.861713782380612e-05 0.010909690838091068" rpy="0 0 0"/>
+    <mass value="0.03567201816170213"/>
+    <inertia ixx="7e-06" iyy="6e-06" izz="1e-05" ixy="-0.0" iyz="-0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.02441 0.002356 -0.260554" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://road_robot_description/meshes/imu_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="fine_textured_black"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.02441 0.002356 -0.260554" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://road_robot_description/meshes/imu_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<joint name="right_front_wheel_to_base_link_joint" type="continuous">
+  <origin xyz="0.222031 -0.223356 0.023089" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="right_front_wheel_2"/>
+  <axis xyz="-0.0 -1.0 -0.0"/>
+</joint>
+
+<joint name="left_front_wheel_to_base_link_joint" type="continuous">
+  <origin xyz="0.222031 0.222644 0.023089" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="left_front_wheel_1"/>
+  <axis xyz="0.0 1.0 0.0"/>
+</joint>
+
+<joint name="right_camera_brio_to_base_link_joint" type="fixed">
+  <origin xyz="0.133324 -0.070356 0.440647" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="right_camera_brio_1"/>
+</joint>
+
+<!-- Joint fija con rotación -->
+<joint name="right_camera_rotado" type="fixed">
+  <parent link="right_camera_brio_1"/>
+  <child link="right_camera_tf"/>
+  <!-- Rotación de 90 grados sobre el eje Z -->
+  <origin rpy="-1.5708 0 -1.5708" xyz="0 0 0"/>
+</joint>
+
+<joint name="left_camera_brio_to_base_link_joint" type="fixed">
+  <origin xyz="0.133324 0.069644 0.440647" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="left_camera_brio_1"/>
+</joint>
+
+<!-- Joint fija con rotación -->
+<joint name="left_camera_rotado" type="fixed">
+  <parent link="left_camera_brio_1"/>
+  <child link="left_camera_tf"/>
+  <!-- Rotación de 90 grados sobre el eje Z -->
+  <origin rpy="-1.5708 0 -1.5708" xyz="0 0 0"/>
+</joint>
+
+<joint name="right_circular_brush_to_base_link_joint" type="continuous">
+  <origin xyz="0.33221 -0.079527 0.053963" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="right_circular_brush_1"/>
+  <axis xyz="0.008382 -0.0 0.999965"/>
+</joint>
+
+<joint name="left_circular_brush_to_base_link_joint" type="continuous">
+  <origin xyz="0.33221 0.080473 0.053963" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="left_circular_brush_1"/>
+  <axis xyz="0.008382 -0.0 0.999965"/>
+</joint>
+
+<joint name="imu_to_base_link_joint" type="fixed">
+  <origin xyz="0.02441 -0.002356 0.260554" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="imu_1"/>
+</joint>
+
+</robot>

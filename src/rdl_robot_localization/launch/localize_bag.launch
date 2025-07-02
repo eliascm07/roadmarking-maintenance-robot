@@ -1,0 +1,8 @@
+<launch>
+  <!-- Llamar al archivo hijo para lanzar otros nodos -->
+  <include file="$(find rdl_robot_localization)/launch/localize.launch"/>
+
+  <!-- Iniciar la reproducción del rosbag -->
+  <node pkg="rosbag" type="play" name="rosbagplay" output="screen" args="/home/eliascm07/catkin_ws/bags/rosbag_tesis/sot-val1.bag /tf:=/tf_dev_null --delay 5"/>
+  
+</launch>

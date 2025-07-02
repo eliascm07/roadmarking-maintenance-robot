@@ -1,0 +1,9 @@
+digraph G {
+"base_footprint" -> "imu"[label=" Broadcaster: /footprint_to_imu\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
+"odom" -> "base_footprint"[label=" Broadcaster: /ekf_localization_node\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
+"odom_enc" -> "base_link"[label=" Broadcaster: /roboclawfront\nAverage rate: 20.206\nBuffer length: 4.999\nMost recent transform: 1733267592.7\nOldest transform: 1733267587.701\n"];
+edge [style=invis];
+ subgraph cluster_legend { style=bold; color=black; label ="view_frames Result";
+"Recorded at time: 1733275060.108535"[ shape=plaintext ] ;
+}->"odom_enc";
+}

@@ -1,0 +1,7 @@
+<launch>
+    <!-- Lanzar el nodo que publica los Markers -->
+    <node pkg="rdl_robot_vision" type="view_interests_points.py" name="interes_point_map_marker" output="screen"/>
+
+    <!-- Lanzar RViz con la configuración guardada -->
+    <node pkg="rviz" type="rviz" name="rviz" args="-d $(find rdl_robot_vision)/config/rviz_marker.rviz" />
+</launch>

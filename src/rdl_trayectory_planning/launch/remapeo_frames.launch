@@ -1,0 +1,35 @@
+<launch>
+  <!-- Publicar la transformación estática entre base_footprint e imu_link -->
+  <node pkg="tf2_ros" type="static_transform_publisher" name="base_to_imu"
+        args="-0.025 -0.002356 0.335 0.0 0.0 0.0 base_footprint imu" />
+        
+  <node pkg="tf2_ros" type="static_transform_publisher" name="base_to_footprint"
+        args="-0.15 0.0 -0.06 0.0 0.0 0.0 base_link base_footprint" />
+
+  <!-- Nodo que suscribe y procesa los datos del IMU -->
+  <!-- <node pkg="rdl_trayectory_planning" type="imu_to_base_footprint.py" name="imu_transformer" output="screen" /> -->
+
+  <!-- Publicar la transformación estática entre base_footprint e imu_link -->
+  <!--  <node pkg="tf" type="static_transform_publisher" name="base"
+        args="0.1 0.05 0.0 0.0 0.0 1.5708 base_footprint base_link" /> -->
+
+  <!-- Nodo que suscribe y procesa los datos del IMU -->
+  <!-- <node pkg="rdl_trayectory_planning" type="encoders_to_base_footprint.py" name="odom_transformer" output="screen" /> -->
+
+
+  <!-- Sample launch file, transforms NED referenced data in imu_link_ned to ENU equivalent data in imu_link -->
+
+  <!-- Static tfs -->
+ <!--  <node pkg="tf" type="static_transform_publisher" name="imu_to_base_footprint"
+        args="0 0 0 0 0 0 1.0 imu base_footprint 100" output="screen"/> -->
+
+  <!-- Transforms NED IMU data pulished in frame imu_link_ned on topics /imu/data_ned and /imu/mag_ned to
+   ENU data in frame imu_link published on /imu/data_enu and /imu/mag_enu -->
+  <!--  <node pkg="imu_transformer" type="imu_transformer_node" name="imu_data_transformer" output="screen">
+    <remap from="imu_in/data" to="imu"/>
+    <remap from="imu_out/data" to="imu_base_footprint"/>
+    <param name="target_frame" value="base_footprint"/>
+  </node> -->
+
+
+</launch>

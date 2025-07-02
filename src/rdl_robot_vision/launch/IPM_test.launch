@@ -1,0 +1,7 @@
+<launch>
+    <!-- Lanzar el nodo que publica los Markers -->
+    <node pkg="rdl_robot_vision" type="view_IPM_images.py" name="IPM_images" output="screen"/>
+
+    <!-- Lanzar RViz con la configuración guardada -->
+    <node pkg="rviz" type="rviz" name="rviz" args="-d $(find rdl_robot_vision)/config/IPM.rviz" />
+</launch>

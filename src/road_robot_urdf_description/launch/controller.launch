@@ -1,0 +1,9 @@
+<launch>
+
+<rosparam file="$(find road_robot_urdf_description)/launch/controller.yaml" command="load"/>
+<node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen" ns="road_robot_urdf" args="left_front_wheel_to_base_link_position_controller right_back_wheel_to_base_link_position_controller left_back_wheel_to_base_link_position_controller right_front_wheel_to_base_link_position_controller joint_state_controller "/>
+<node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="false" output="screen">
+  <remap from="/joint_states" to="/road_robot_urdf/joint_states"/>
+</node>
+
+</launch>
